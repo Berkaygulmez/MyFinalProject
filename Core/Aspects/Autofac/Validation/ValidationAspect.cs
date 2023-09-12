@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.Aspects.Autofac.Validation
 {
-    public class ValidationAspect : MethodInterception  //Aspect
+    public class ValidationAspect : MethodInterception
     {
         private Type _validatorType;
         public ValidationAspect(Type validatorType)
@@ -30,7 +30,8 @@ namespace Core.Aspects.Autofac.Validation
             foreach (var entity in entities)
             {
                 ValidationTool.Validate(validator, entity);
-            }
+            }//fluent validation sürümü ile alakalı bir sorun sanırım kontrol et ve adamdakiyle aynı sürümleri yap
         }
     }
 }
+

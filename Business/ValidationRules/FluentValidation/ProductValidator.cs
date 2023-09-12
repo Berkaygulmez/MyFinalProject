@@ -13,14 +13,14 @@ namespace Business.ValidationRules.FluentValidation
         public ProductValidator()
         {
             RuleFor(p => p.ProductName).NotEmpty();
-            RuleFor(p => p.ProductName).MinimumLength(2);
+            RuleFor(p => p.ProductName).Length(2, 30);
             RuleFor(p => p.UnitPrice).NotEmpty();
-            RuleFor(p => p.UnitPrice).GreaterThan(0);
+            RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(1);
             RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(10).When(p => p.CategoryId == 1);
-            RuleFor(p => p.ProductName).Must(StartWithA).WithMessage("Ürünler A harfi ile başlamalı");   //Olmayan yeni bir kural için kullanıyoruz. Methodu aşağıda doldurucaz.
+            RuleFor(p => p.ProductName).Must(StartWithWithA);
         }
 
-        private bool StartWithA(string arg)
+        private bool StartWithWithA(string arg)
         {
             return arg.StartsWith("A");
         }
